@@ -2,15 +2,18 @@ package de.deepshore.kafka.models;
 
 import io.micronaut.core.annotation.Introspected;
 
-@Introspected
-public class XsdPack {
-    private String xsd;
-    private String xml;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
-    public XsdPack(String xsd, String xml) {
-        this.xsd = xsd;
-        this.xml = xml;
-    }
+@Introspected
+public class    XsdPack {
+    @NotBlank
+    private String namespace = "de.deepshore.kafka";
+    private String xpathRecordKey = "";
+    @Pattern(regexp = "^<(xsd|\\?xml).*$", message = "XSD must start with <xsd or <?xml tag", flags = Pattern.Flag.DOTALL)
+    private String xsd;
+    @Pattern(regexp = "^<\\?xml.*$", message = "XML must start with <?xml tag", flags = Pattern.Flag.DOTALL)
+    private String xml;
 
     public String getXsd() {
         return xsd;
@@ -26,5 +29,21 @@ public class XsdPack {
 
     public void setXml(String xml) {
         this.xml = xml;
+    }
+
+    public String getNamespace() {
+        return namespace;
+    }
+
+    public void setNamespace(String namespace) {
+        this.namespace = namespace;
+    }
+
+    public String getXpathRecordKey() {
+        return xpathRecordKey;
+    }
+
+    public void setXpathRecordKey(String xpathRecordKey) {
+        this.xpathRecordKey = xpathRecordKey;
     }
 }
