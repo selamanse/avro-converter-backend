@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="logistics-shipment-tracking-events">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="systemHeader">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="eventSchemaVersion" minOccurs="1" type="xs:string"/>
+                            <xs:element name="recordCreatedTimestamp" minOccurs="1" type="xs:string"/>
+                            <xs:element name="messageIdentifiers">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="messageId" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="correlationId" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="sourceSystem" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="eventSequenceNumber" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="publishTimestamp" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="retryCount" minOccurs="0" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="shipmentEvent">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="eventType" minOccurs="1" type="xs:string"/>
+                            <xs:element name="eventOccurredAt" minOccurs="1" type="xs:string"/>
+                            <xs:element name="shipment">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="trackingNumber" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="orderId" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="serviceType" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="shipmentStatus" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="estimatedDeliveryDate" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="actualDeliveryDate" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="priority" minOccurs="1" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="origin">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="originAddress">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="originName" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="originStreet" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="originCity" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="originState" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="originPostalCode" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="originCountry" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="originPhoneNumber" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="originEmail" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="facility" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="facilityId" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="facilityType" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="operatingHours" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="destination">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="destinationAddress">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="destinationName" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="destinationStreet" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="destinationCity" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="destinationState" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="destinationPostalCode" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="destinationCountry" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="destinationPhoneNumber" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="destinationEmail" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="deliveryInstructions" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="accessibilityInfo" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="hasElevator" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="floorNumber" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="requiresAppointment" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="package">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="dimensions">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="length" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="width" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="height" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="dimensionUnit" minOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="weight">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="weightValue" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="weightUnit" minOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="contents" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="description" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="quantity" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="declaredValue">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="declaredValueAmount" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="declaredValueCurrency" minOccurs="0" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="packaging">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="packageType" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="isFragile" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="requiresSignature" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="temperatureControlled" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="pricing" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="baseRate">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="baseRateAmount" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="baseRateCurrency" minOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="surcharges" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="surcharge" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="type" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="surchargeAmount" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="surchargeDescription" minOccurs="0" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="discounts" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="discount" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="discountCode" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="discountAmount" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="percentage" minOccurs="0" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="totalAmount">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="totalAmountValue" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="totalAmountCurrency" minOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="tracking" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="currentLocation">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="facilityName" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="currentLocationCity" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="currentLocationState" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="currentLocationCountry" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="coordinates" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="latitude" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="longitude" minOccurs="0" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="statusHistory" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="statusUpdate" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="status" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="timestamp" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="location" minOccurs="0" type="xs:string"/>
+                                                                <xs:element name="notes" minOccurs="0" type="xs:string"/>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="carrier" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="carrierInfo">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="carrierId" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="carrierName" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="serviceLevel" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="vehicleType" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="driver" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="driverId" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="driverName" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="contactNumber" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="vehicleNumber" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="insurance" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="isInsured" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="policyNumber" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="coverageAmount">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="coverageAmountValue" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="coverageAmountCurrency" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="provider" minOccurs="0" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="customsInfo" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="declarationNumber" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="customsValue">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="customsValueAmount" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="customsValueCurrency" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="dutyAmount" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="dutyAmountValue" minOccurs="0" type="xs:string"/>
+                                                    <xs:element name="dutyAmountCurrency" minOccurs="0" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="harmonizedCode" minOccurs="0" type="xs:string"/>
+                                        <xs:element name="countryOfOrigin" minOccurs="0" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

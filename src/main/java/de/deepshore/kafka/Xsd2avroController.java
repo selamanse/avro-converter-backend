@@ -51,7 +51,7 @@ public class Xsd2avroController {
             transform.configure(transformConfig);
 
             ConnectRecord<SinkRecord> transformedRecord = transform.apply(getDummySinkRecord(xsdpack.getXml()));
-            final AvroData ad = new AvroData(20000);
+            final AvroData ad = new AvroData(2000000);
 
             final org.apache.avro.Schema valueSchema = ad.fromConnectSchema(transformedRecord.valueSchema());
             final org.apache.avro.Schema keySchema = ad.fromConnectSchema(transformedRecord.keySchema());

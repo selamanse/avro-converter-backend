@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="logistics-shipment-tracking-events">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="systemHeader">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="eventSchemaVersion" minOccurs="1" type="xs:string"/>
+                            <xs:element name="recordCreatedTimestamp" minOccurs="1" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="shipmentEvent">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="eventType" minOccurs="1" type="xs:string"/>
+                            <xs:element name="shipment">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="trackingNumber" minOccurs="1" type="xs:string"/>
+                                        <xs:element name="orderId" minOccurs="1" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <!-- Optional nested structure - this is the key test -->
+                            <xs:element name="pricing" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="baseRate">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="amount" minOccurs="1" type="xs:string"/>
+                                                    <xs:element name="currency" minOccurs="1" type="xs:string"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

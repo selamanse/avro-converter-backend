@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logistics-shipment-tracking-events>
+    <systemHeader>
+        <eventSchemaVersion>2.1.0</eventSchemaVersion>
+        <recordCreatedTimestamp>2026-01-29T19:45:00.000Z</recordCreatedTimestamp>
+    </systemHeader>
+    <shipmentEvent>
+        <eventType>SHIPMENT_IN_TRANSIT</eventType>
+        <shipment>
+            <trackingNumber>SHIP2026012900001234</trackingNumber>
+            <orderId>ORD-2026-WEB-543210</orderId>
+        </shipment>
+        <!-- Note: pricing element is MISSING - this should trigger the bug -->
+    </shipmentEvent>
+</logistics-shipment-tracking-events>

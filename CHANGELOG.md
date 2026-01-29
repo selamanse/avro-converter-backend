@@ -29,11 +29,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added duplicate handling strategy for Gradle Copy tasks to resolve build conflicts
 - Added `application-test.yml` with random port configuration for test environment
 - Added GitHub Container Registry publishing with automatic tagging (latest, branch-sha, branch name)
+- Added comprehensive test schemas for logistics shipment tracking events
+- Added `shipments-simple.xsd` - simplified schema demonstrating successful Avro conversion with unique field names
+- Added `shipments-fixed.xsd` - complex schema with all duplicate field names resolved for Avro compatibility
+- Added test cases `testConvertSimpleShipmentData()` and `testConvertFullyFixedShipmentData()` to verify Avro conversion with complex nested schemas
+- Added `ISSUE_ROOT_CAUSE.md` documentation explaining NullPointerException when duplicate field names exist in XSD schemas
 
 ### Fixed
 - Fixed duplicate jar handling during build process (jaxb-core conflicts)
 - Fixed test port binding issues by configuring random port allocation for tests
 - Fixed validation module dependencies for Micronaut 4.x compatibility
+
+### Documented
+- Documented root cause of `NullPointerException` in Confluent AvroData when converting schemas with duplicate field names
+- Documented solution: All duplicate field names across entire XSD schema must be unique, including parent element names
+- Documented that partial fixes (renaming some but not all duplicates) do not resolve the issue
 
 ### Migration Notes
 - **Java 21 Required**: This version requires Java 21 or higher (required by kafka-connect-transform-xml subdependency)
